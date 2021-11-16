@@ -15,11 +15,12 @@ class FilePrinter:
 
 class Logger:
     def __init__(self):
-        self.prefix = time.strftime('%Y-%b-%d %H:%M:%S', time.localtime())
+        self.format = '%Y-%b-%d %H:%M:%S'
 
 
     def log(self, message, notifier):
-        notifier().write(f"{self.prefix} {message}")
+        prefix = time.strftime(self.format, time.localtime())
+        notifier().write(f"{prefix} {message}")
 
 
 logger = Logger()

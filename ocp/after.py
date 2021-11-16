@@ -4,16 +4,17 @@ import time
 
 class Logger:
     def __init__(self):
-        self.prefix = time.strftime('%Y-%b-%d %H:%M:%S', time.localtime())
+        self.format = '%Y-%b-%d %H:%M:%S'
         
     def log(self, message):
-        sys.stderr.write(f"{self.prefix} --> {message}\n")
+        prefix = time.strftime(self.format, time.localtime())
+        sys.stderr.write(f"{prefix} --> {message}\n")
 
 
 class CustomerLogger(Logger):
     def __init__(self):
         super().__init__()
-        self.prefix = time.strftime('%Y-%b-%d', time.localtime())
+        self.format = '%Y-%b-%d'
 
 
 logger = Logger()
